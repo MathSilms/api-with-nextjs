@@ -13,12 +13,18 @@ export class UsersService {
   ) {}
   
   async createUser(createUserDto: CreateUserDto): Promise<User> {
-    this.userRepository.findOne({where:{ cpf:String }})
-    
-    if (createUserDto.password != createUserDto.passwordConfirmation) {
-      throw new UnprocessableEntityException('As senhas não conferem');
+    const userExist = await this.userRepository.findOne({where:{ cpf:String }})
+    if (userExist) {
+      throw new UnprocessableEntityException('Usuário já existente');
     } else {
-      return this.userRepository.createUser(createUserDto, UserRole.ADMIN);
+
+        
+
+
+
+         /* stopped here >>*/ console.log(createUserDto.dateOfBirth.split('/'));
+
+      return this.userRepository.createUser(createUserDto);
     }
   }
 }

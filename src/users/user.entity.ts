@@ -17,12 +17,12 @@ import {
   
     @Column({ nullable: false, type: 'varchar', length: 200 })
     name: string;
+
+    @Column({ nullable: false })
+    dateOfBirth: string;
     
     @Column({ nullable: false, type: 'varchar', length: 200 })
     cpf: string;
-  
-    @Column({ nullable: false })
-    dateOfBirth: Date;
   
     @CreateDateColumn()
     createdAt: Date;

@@ -3,5 +3,5 @@ export class CreateUserDto {
     email: string;
     name: string;
     cpf: string;
-    dateOfBirth: Date;
+    dateOfBirth: string;
   }

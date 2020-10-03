@@ -14,6 +14,7 @@ export class UserRepository extends Repository<User> {
   ): Promise<User> {
     const { name, cpf, dateOfBirth } = createUserDto;
 
+
     const user = this.create();
     user.name = name;
     user.dateOfBirth = dateOfBirth;
@@ -21,12 +22,11 @@ export class UserRepository extends Repository<User> {
     
     try {
       await user.save();
-    //   delete user.password;
-    //   delete user.salt;
+      
       return user;
     } catch (error) {
       if (error.code.toString() === '23505') {
-        throw new ConflictException('Endereço de email já está em uso');
+        throw new ConflictException('cpf já está em uso');
       } else {
         throw new InternalServerErrorException(
           'Erro ao salvar o usuário no banco de dados',
