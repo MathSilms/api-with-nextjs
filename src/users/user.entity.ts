@@ -10,29 +10,19 @@ import {
   } from 'typeorm';
   
   @Entity()
-  @Unique(['email'])
   @Unique(['cpf'])
   export class User extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
   
     @Column({ nullable: false, type: 'varchar', length: 200 })
-    email: string;
+    name: string;
     
     @Column({ nullable: false, type: 'varchar', length: 200 })
     cpf: string;
   
-    @Column({ nullable: false, type: 'varchar', length: 200 })
-    name: string;
-  
-    @Column({ nullable: false, type: 'varchar', length: 20 })
-    role: string;
-  
-    @Column({ nullable: false, default: true })
-    status: boolean;
-  
     @Column({ nullable: false })
-    password: string;
+    dateOfBirth: string;
   
     @Column({ nullable: false })
     salt: string;

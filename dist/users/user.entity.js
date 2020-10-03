@@ -20,27 +20,15 @@ __decorate([
 __decorate([
     typeorm_1.Column({ nullable: false, type: 'varchar', length: 200 }),
     __metadata("design:type", String)
-], User.prototype, "email", void 0);
+], User.prototype, "name", void 0);
 __decorate([
     typeorm_1.Column({ nullable: false, type: 'varchar', length: 200 }),
     __metadata("design:type", String)
 ], User.prototype, "cpf", void 0);
 __decorate([
-    typeorm_1.Column({ nullable: false, type: 'varchar', length: 200 }),
-    __metadata("design:type", String)
-], User.prototype, "name", void 0);
-__decorate([
-    typeorm_1.Column({ nullable: false, type: 'varchar', length: 20 }),
-    __metadata("design:type", String)
-], User.prototype, "role", void 0);
-__decorate([
-    typeorm_1.Column({ nullable: false, default: true }),
-    __metadata("design:type", Boolean)
-], User.prototype, "status", void 0);
-__decorate([
     typeorm_1.Column({ nullable: false }),
     __metadata("design:type", String)
-], User.prototype, "password", void 0);
+], User.prototype, "dateOfBirth", void 0);
 __decorate([
     typeorm_1.Column({ nullable: false }),
     __metadata("design:type", String)
@@ -63,7 +51,6 @@ __decorate([
 ], User.prototype, "updatedAt", void 0);
 User = __decorate([
     typeorm_1.Entity(),
-    typeorm_1.Unique(['email']),
     typeorm_1.Unique(['cpf'])
 ], User);
 exports.User = User;
