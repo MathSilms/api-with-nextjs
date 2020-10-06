@@ -1,18 +1,18 @@
 
 import { EntityRepository, Repository } from 'typeorm';
-import { User } from './user.entity';
+import { Student } from './student.entity';
 import {
   ConflictException,
   InternalServerErrorException,
 } from '@nestjs/common';
-import { CreateUserDto } from './dtos/create-user.dto';
+import { CreateStudentDto } from './dtos/create-student.dto';
 
-@EntityRepository(User)
-export class UserRepository extends Repository<User> {
-  async createUser(
-    createUserDto: CreateUserDto,
-  ): Promise<User> {
-    const { name, cpf, dateOfBirth } = createUserDto;
+@EntityRepository(Student)
+export class StudentRepository extends Repository<Student> {
+  async createStudent(
+    createStudentDto: CreateStudentDto,
+  ): Promise<Student> {
+    const { name, cpf, dateOfBirth } = createStudentDto;
 
 
     const user = this.create();

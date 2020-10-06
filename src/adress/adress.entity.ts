@@ -13,7 +13,7 @@ import {
   import { User } from 'src/users/user.entity';
   
   @Entity()
-  @Unique(['email'])
+  @Unique(['student_id'])
   export class Adress extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;

@@ -1,5 +1,5 @@
 
-export class CreateUserDto {
+export class CreateStudentDto {
     email: string;
     name: string;
     cpf: string;

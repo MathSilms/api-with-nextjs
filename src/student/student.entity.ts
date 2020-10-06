@@ -13,7 +13,7 @@ import {
   
   @Entity()
   @Unique(['cpf'])
-  export class User extends BaseEntity {
+  export class Student extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
   
