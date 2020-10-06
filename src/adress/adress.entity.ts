@@ -1,4 +1,5 @@
 
+
 import {
     BaseEntity,
     Entity,
@@ -9,7 +10,7 @@ import {
     UpdateDateColumn,
     ManyToOne
   } from 'typeorm';
-import user from '../users/user.entity'
+  import { User } from 'src/users/user.entity';
   
   @Entity()
   @Unique(['email'])
@@ -18,32 +19,26 @@ import user from '../users/user.entity'
     id: string;
   
     @Column({ nullable: false, type: 'varchar', length: 200 })
-    email: string;
+    street: string;
   
     @Column({ nullable: false, type: 'varchar', length: 200 })
-    name: string;
+    number: string;
   
-    @Column({ nullable: false, type: 'varchar', length: 20 })
-    role: string;
+    @Column({ nullable: false, type: 'varchar', length: 200 })
+    complement: string;
   
     @Column({ nullable: false, default: true })
-    status: boolean;
+    neighborhood: string;
   
     @Column({ nullable: false })
-    password: string;
-  
-    @Column({ nullable: false })
-    salt: string;
-  
-    @Column({ nullable: true, type: 'varchar', length: 64 })
-    confirmationToken: string;
-  
-    @Column({ nullable: true, type: 'varchar', length: 64 })
-    recoverToken: string;
+    student_id: number;
   
     @CreateDateColumn()
     createdAt: Date;
   
     @UpdateDateColumn()
     updatedAt: Date;
+
+    @ManyToOne(() => User, user => user.adress)
+    user: User;
   }

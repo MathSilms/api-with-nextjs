@@ -7,7 +7,8 @@ import {
     PrimaryGeneratedColumn,
     Column,
     CreateDateColumn,
-    UpdateDateColumn,, OneToMany
+    UpdateDateColumn, 
+    OneToMany
   } from 'typeorm';
   
   @Entity()
@@ -31,6 +32,6 @@ import {
     @UpdateDateColumn()
     updatedAt: Date;
 
-    @OneToMany(type => Adress, adress => Adress.user)
-    adress: Adress;
+    @OneToMany(() => Adress, adress => adress.user)
+    adress: Adress[];
   }
