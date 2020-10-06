@@ -10,7 +10,7 @@ import {
     UpdateDateColumn,
     ManyToOne
   } from 'typeorm';
-  import { User } from 'src/users/user.entity';
+  import { Student } from 'src/students/student.entity';
   
   @Entity()
   @Unique(['student_id'])
@@ -39,6 +39,6 @@ import {
     @UpdateDateColumn()
     updatedAt: Date;
 
-    @ManyToOne(() => User, user => user.adress)
-    user: User;
+    @ManyToOne(() => Student, student => student.adress)
+    student: Student;
   }

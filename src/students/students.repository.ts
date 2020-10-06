@@ -15,21 +15,21 @@ export class StudentRepository extends Repository<Student> {
     const { name, cpf, dateOfBirth } = createStudentDto;
 
 
-    const user = this.create();
-    user.name = name;
-    user.dateOfBirth = dateOfBirth;
-    user.cpf = cpf;
+    const student = this.create();
+    student.name = name;
+    student.dateOfBirth = dateOfBirth;
+    student.cpf = cpf;
     
     try {
-      await user.save();
+      await student.save();
       
-      return user;
+      return student;
     } catch (error) {
       if (error.code.toString() === '23505') {
         throw new ConflictException('cpf já está em uso');
       } else {
         throw new InternalServerErrorException(
-          'Erro ao salvar o usuário no banco de dados',
+          'Erro ao salvar o aluno no banco de dados',
         );
       }
     }

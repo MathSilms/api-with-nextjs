@@ -11,4 +11,4 @@ import { StudentsController } from './Students.controller';
   controllers: [StudentsController],
   exports:[]
 })
-export class UsersModule {}
+export class StudentsModule {}

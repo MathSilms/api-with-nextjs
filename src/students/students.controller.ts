@@ -2,7 +2,7 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { CreateStudentDto } from './dtos/create-student.dto';
 import { StudentsService } from './students.service';
-import { ReturnUserDto } from './dtos/return-user.dto';
+import { ReturnStudentDto } from './dtos/return-student.dto';
 
 @Controller('users')
 export class StudentsController {
@@ -11,7 +11,7 @@ export class StudentsController {
   @Post()
   async createUser(
     @Body() createStudentDto: CreateStudentDto,
-  ): Promise<ReturnUserDto> {
+  ): Promise<ReturnStudentDto> {
 
       const date = createStudentDto.dateOfBirth.split('/')
       const birth = `${date[2]}/${date[1]}/${date[0]}`

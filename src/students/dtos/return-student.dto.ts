@@ -2,6 +2,6 @@
 import { Student } from '../student.entity';
 
 export class ReturnStudentDto {
-  Student: Student;
+  student: Student;
   message: string;
 }
