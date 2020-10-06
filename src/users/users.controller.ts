@@ -9,13 +9,20 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Post()
-  async createAdminUser(
+  async createUser(
     @Body() createUserDto: CreateUserDto,
   ): Promise<ReturnUserDto> {
+
+      const date = createUserDto.dateOfBirth.split('/')
+      const birth = `${date[2]}/${date[1]}/${date[0]}`
+      const newDate = new Date(birth)
+      createUserDto.dateOfBirth = newDate.toString();
     const user = await this.usersService.createUser(createUserDto);
     return {
       user,
-      message: 'Administrador cadastrado com sucesso',
+      message: 'Aluno cadastrado com sucesso',
     };
   }
+
+  
 }

@@ -17,13 +17,6 @@ export class UsersService {
     if (userExist) {
       throw new UnprocessableEntityException('Usuário já existente');
     } else {
-
-        
-
-
-
-         /* stopped here >>*/ console.log(createUserDto.dateOfBirth.split('/'));
-
       return this.userRepository.createUser(createUserDto);
     }
   }
