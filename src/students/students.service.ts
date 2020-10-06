@@ -1,5 +1,5 @@
 
-import { Injectable, UnprocessableEntityException } from '@nestjs/common';
+import { Injectable, UnprocessableEntityException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { StudentRepository } from './students.repository';
 import { CreateStudentDto } from './dtos/create-student.dto';
@@ -10,6 +10,7 @@ export class StudentsService {
   constructor(
     @InjectRepository(StudentRepository)
     private studentsRepository: StudentRepository,
+    
   ) {}
   
   async createUser(createStudentDto: CreateStudentDto): Promise<Student> {
@@ -19,5 +20,13 @@ export class StudentsService {
     } else {
       return this.studentsRepository.createStudent(createStudentDto);
     }
+  }
+
+  async findUserById(id: string): Promise<Student> {
+    const student = await this.studentsRepository.findOne({id});
+
+    if (!student) throw new NotFoundException('Aluno não encontrado');
+
+    return student;
   }
 }

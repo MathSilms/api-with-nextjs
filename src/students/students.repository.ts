@@ -13,8 +13,12 @@ export class StudentRepository extends Repository<Student> {
     createStudentDto: CreateStudentDto,
   ): Promise<Student> {
     const { name, cpf, dateOfBirth } = createStudentDto;
+    // ainda está incompleto a lógica da data !!! Terminar depois, se der tempo
 
-
+    // const date = createStudentDto.dateOfBirth.split('/')
+    // const birth = `${date[2]}/${date[1]}/${date[0]}`
+    // const newDate = new Date(birth);
+    
     const student = this.create();
     student.name = name;
     student.dateOfBirth = dateOfBirth;

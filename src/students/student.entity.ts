@@ -25,6 +25,9 @@ import {
     
     @Column({ nullable: false, type: 'varchar', length: 200 })
     cpf: string;
+
+    // @Column({ nullable: false, type: 'varchar', length: 200 })
+    // note: number;
   
     @CreateDateColumn()
     createdAt: Date;

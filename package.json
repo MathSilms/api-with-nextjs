@@ -27,6 +27,7 @@
     "@nestjs/swagger": "^4.6.1",
     "@nestjs/typeorm": "^7.1.4",
     "bcrypt": "^5.0.0",
+    "class-validator": "^0.12.2",
     "pg": "^8.3.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
