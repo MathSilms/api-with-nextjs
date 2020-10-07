@@ -12,7 +12,7 @@ export class StudentRepository extends Repository<Student> {
   async createStudent(
     createStudentDto: CreateStudentDto,
   ): Promise<Student> {
-    const { name, cpf, dateOfBirth } = createStudentDto;
+    const { name, cpf, dateOfBirth, note } = createStudentDto;
     // ainda está incompleto a lógica da data !!! Terminar depois, se der tempo
 
     // const date = createStudentDto.dateOfBirth.split('/')
@@ -23,6 +23,7 @@ export class StudentRepository extends Repository<Student> {
     student.name = name;
     student.dateOfBirth = dateOfBirth;
     student.cpf = cpf;
+    student.note = note;
     
     try {
       await student.save();
@@ -33,7 +34,7 @@ export class StudentRepository extends Repository<Student> {
         throw new ConflictException('cpf já está em uso');
       } else {
         throw new InternalServerErrorException(
-          'Erro ao salvar o aluno no banco de dados',
+          'Faltam alguns dados para conseguir cadastrar um aluno',
         );
       }
     }

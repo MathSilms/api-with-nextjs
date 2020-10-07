@@ -1,8 +1,11 @@
 
-import { Controller, Post, Body, Get, Param } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Patch, ForbiddenException, ValidationPipe } from '@nestjs/common';
 import { CreateStudentDto } from './dtos/create-student.dto';
 import { StudentsService } from './students.service';
 import { ReturnStudentDto } from './dtos/return-student.dto';
+import { Student } from './student.entity';
+import { UpdateStudentDto } from './dtos/update.student.dto';
+import { GetStudent } from './getStudentDecorator';
 //import { AdressService } from 'src/adress/adress.service';
 
 @Controller('students')
@@ -16,7 +19,7 @@ export class StudentsController {
   async createStudents(
     @Body() createStudentDto: CreateStudentDto,
   ): Promise<ReturnStudentDto> {
-    const student = await this.studentsService.createUser(createStudentDto);
+    const student = await this.studentsService.createStudent(createStudentDto);
     return {
       student,
       message: 'Aluno cadastrado com sucesso',
@@ -32,4 +35,23 @@ export class StudentsController {
       student,
     };
   }
+
+  @Patch(':id')
+  async updateStudent(
+    @Body(ValidationPipe) updateStudentDto: UpdateStudentDto,
+    @GetStudent() student: Student,
+    @Param('id') id: string,
+  ) {
+    const students = await this.studentsService.findUserById(id)
+
+    // parei aqui !!!!!!!!!!!!!!!!!!!!!!
+    if (students.id != id) {
+      throw new ForbiddenException(
+        'Você não tem autorização para editar esse aluno',
+      );
+    } else {
+      return this.studentsService.updateUser(updateStudentDto, id);
+    }
+  }
+
 }

@@ -20,14 +20,14 @@ import {
     @Column({ nullable: false, type: 'varchar', length: 200 })
     name: string;
 
-    @Column({ nullable: false })
+    @Column({ nullable: false, type: 'varchar', length: 200  })
     dateOfBirth: string;
     
     @Column({ nullable: false, type: 'varchar', length: 200 })
     cpf: string;
 
-    // @Column({ nullable: false, type: 'varchar', length: 200 })
-    // note: number;
+    @Column({ nullable: false, type: 'varchar', length: 200 })
+    note: number;
   
     @CreateDateColumn()
     createdAt: Date;

@@ -9,7 +9,7 @@ async function bootstrap() {
                       .setTitle('API with Nestjs')
                       .setDescription('the description of the Nestjs API for student registration')
                       .setVersion('1.0')
-                      .addTag('cats')
+                      .addTag('student')
                       .build();
 
   const document = SwaggerModule.createDocument(app, options);

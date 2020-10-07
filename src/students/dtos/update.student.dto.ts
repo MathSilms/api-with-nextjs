@@ -1,5 +1,5 @@
 
-import { IsString, IsEmail, IsOptional } from 'class-validator';
+import { IsString, IsOptional, IsNumber  } from 'class-validator';
 export class UpdateStudentDto {
   @IsOptional()
   @IsString({
@@ -8,11 +8,14 @@ export class UpdateStudentDto {
   name: string;
 
   @IsOptional()
-  @IsEmail(
-    {},
+  @IsString(
     {
-      message: 'Informe um endereço de email válido',
+      message: 'Informe uma data válida',
     },
   )
   dateOfBirth: string;
+
+  @IsOptional()
+  @IsNumber()
+  note: number;
 }
