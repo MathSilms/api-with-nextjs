@@ -35,6 +35,6 @@ import {
     @UpdateDateColumn()
     updatedAt: Date;
 
-    @OneToMany(() => Adress, adress => adress.student)
-    adress: Adress[];
+    @OneToMany(() => Adress, adress => adress.student_id)
+    adress: Adress;
   }

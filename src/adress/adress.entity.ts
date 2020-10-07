@@ -13,7 +13,7 @@ import {
   import { Student } from 'src/students/student.entity';
   
   @Entity()
-  @Unique(['student_id'])
+ 
   export class Adress extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
@@ -31,7 +31,7 @@ import {
     neighborhood: string;
   
     @Column({ nullable: false })
-    student_id: number;
+    student_id: string;
   
     @CreateDateColumn()
     createdAt: Date;

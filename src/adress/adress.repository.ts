@@ -6,10 +6,10 @@ import { ConflictException, InternalServerErrorException } from '@nestjs/common'
 @EntityRepository(Adress)
 export class AdressRepository extends Repository<Adress> {
     async CreateAdress(
-        createAdressDto: CreateAdressDto,
+        createAdressDto: CreateAdressDto, student_id:string
       ): Promise<Adress> {
 
-        const { complement,neighborhood,number,street, student_id } = createAdressDto;
+        const { complement,neighborhood,number,street } = createAdressDto;
 
         const adress = this.create();
         adress.complement = complement;
@@ -20,8 +20,6 @@ export class AdressRepository extends Repository<Adress> {
 
         try {
           await adress.save();
-    
-
           return adress;
 
         } catch (error) {

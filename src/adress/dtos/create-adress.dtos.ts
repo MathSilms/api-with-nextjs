@@ -4,5 +4,5 @@ export class CreateAdressDto {
     number: string;
     complement: string;
     neighborhood: string;
-    student_id: number;
+    student_id: string;
   }
