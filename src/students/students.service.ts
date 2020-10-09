@@ -8,6 +8,7 @@ import { Student } from './student.entity';
 import { AdressRepository } from 'src/adress/adress.repository';
 import { Adress } from 'src/adress/adress.entity';
 import { AdressStudentDto } from './dtos/adress.student.dto';
+import { json } from 'express';
 
 
 @Injectable()
@@ -59,16 +60,58 @@ export class StudentsService {
     return students
   }
 
-  async findAdressStudent(adressStudentDto:AdressStudentDto, id:string){
-    const student = await this.findStudentById(id)
-    if (!student) {
-      throw new NotFoundException('Aluno não encontrado')
-    } else{
-      const Adress = this.adressRepository.find({ relations: [id] })
-      console.log(Adress)
-      if (!Adress) throw new NotFoundException('Endereço não Existe')
-    };
+   async findAdressStudent(id:string){
+     const student = await this.findStudentById(id)
+     if (!student) {
+       throw new NotFoundException('Aluno não encontrado')
+     } else{
+       //const Adress = await this.adressRepository.find({ where:{student_id:id} }) 
+       // Método findAndCount é mais apropriado
+       //const Total = [` Total de endereços:${Adress.length}`, Adress]
+       const Adress = await this.adressRepository.findAndCount({ where:{student_id:id} })
+       if (!Adress) throw new NotFoundException('Endereço não Existe')
+       const Total = [` Total de endereços:${Adress[1]}`, Adress[0]]
+        return Total
+     };
+     
+   }
 
-    return adressStudentDto;
-  }
+    async FindNotes(note:string, param:string){
+      if(param === '>'){
+        //console.log(param)
+        //parei aqui, executar rota pra ver retorno
+        const student = await this.studentsRepository.find({select:['note']})
+        // const n = student.map((n)=>{
+        //   if(n.note > Number(note)) {
+        //     return n
+        //   }
+        function findNote(value){
+          console.log(value)
+          return value.note > Number(note)
+        }
+
+        const n = student.filter(findNote)
+        //console.log(n)
+        return n
+
+      }
+      if(param === '<'){
+        const student = await this.studentsRepository.find({select:['note']})
+        function findNote(value){
+          return value.note < Number(note)
+        }
+
+        const n = student.filter(findNote)
+        return n
+      }
+      // Colocar um retorno com erro adequado se houver tempo.
+      return JSON.stringify('Parâmetro não permitido')
+    }
+
+    async CalcNotes(){
+      /// parei aqui /// 
+      const student = await this.studentsRepository.find({select:['note']})
+      const media = student.map((note)=>{
+       })
+    }
 }

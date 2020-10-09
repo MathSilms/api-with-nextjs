@@ -7,10 +7,17 @@ import { Student } from './student.entity';
 import { UpdateStudentDto } from './dtos/update.student.dto';
 import { GetStudent } from './getStudentDecorator';
 import { Adress } from 'src/adress/adress.entity';
+import { AdressService } from 'src/adress/adress.service';
+import { AdressRepository } from 'src/adress/adress.repository';
+import { AdressStudentDto } from './dtos/adress.student.dto';
 
 @Controller('student')
 export class StudentsController {
-  constructor(private studentsService: StudentsService){}
+  constructor(
+    private studentsService: StudentsService,        
+    private adressService:AdressService,
+    private adressRepository:AdressRepository
+    ){}
 
     //Método POST : http://localhost:3000/student
     //Corpo: name,cpf, dateOfBirth, note 
@@ -60,10 +67,27 @@ export class StudentsController {
      return await this.studentsService.showStudents()
   }
 
-  @Get(':id+:adress')
+  //Método Get : http://localhost:3000/Coloque-aqui-o-ID-do-aluno/adress
+
+  @Get(':id/adress')
     async findAdressStudent(
-      @Param('id') id:string,
+      @Param('id') id:string
     ){
-      return 'porra'
+       return await this.studentsService.findAdressStudent(id)
     }
-}
+
+    //Método Get : http://localhost:3000/students/nota-do-aluno/criterio/parametro '<' ou '>'
+    @Get(':note/criterio/:param')
+    async FindNotes(
+      @Param('note') 
+      note:string,
+      @Param('param') param:string
+    ){
+      return this.studentsService.FindNotes(note.toString(),param)
+    }
+    
+     @Get('media')
+       async CalcNotes(){
+        return this.studentsService.CalcNotes()
+       }
+    }

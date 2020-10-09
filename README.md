@@ -21,55 +21,16 @@
   <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
   <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+  
+  ## Descrição 
+  Projeto criado com o intuito de mostrar meu primeiro contato com o framework nestjs e com o ORM TypeORM.
 
-## Description
+  Foi uma experiência muito divertida, recheada de descobertas e principalmente, muitos bugs rs. Adorei o frame e com certeza levarei o estudo dele adiante, muito prático e fácil de se trabalhar. Top !
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+  Infelizmente por causa do tempo não tive como completar o desafio todo, foi quase !
+  Ainda ficou umas pontas soltas, algumas coisas ainda para melhorar.
 
-## Installation
+  agradeço a lemobs pela oportunidade. 
 
-```bash
-$ npm install
-```
+  abraço.
 
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-  Nest is [MIT licensed](LICENSE).
